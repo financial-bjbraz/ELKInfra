@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  # mysql:
+  #   image: mysql:5.7.24
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: local
+  #     TERM: linux
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - mysql:/var/lib/mysql
+  #     - ./dump.sql:/tmp/dump.sql
+
+  # rabbitmq:
+  #   image: "rabbitmq:management"
+  #   ports:
+  #     - "15672:15672"
+  #     - "5672:5672"
+
+  # sftp:
+  #   image: atmoz/sftp
+  #   volumes:
+  #      - ./local_rsa.pub:/home/foo/.ssh/keys/id_rsa.pub:ro
+  #      - ./up:/home/foo/up
+  #      - ./down:/home/foo/down
+  #      - ./bkp:/home/foo/bkp
+  #   ports:
+  #     - "2222:22"
+  #   # command: foo:pass:1000
+  #   # command: foo:pass:::input
+  #   command: foo::1000
+
+  elk:
+    image: sebp/elk:es241_l240_k461
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    environment:
+        TERM: linux
+    volumes:
+      - ./logstash.conf:/etc/logstash/conf.d/logstash.conf
+      - /tmp/gestaosva.log:/tmp/logs/application.log
+
+# volumes:
+  # mysql:
