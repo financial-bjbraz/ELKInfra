@@ -32,7 +32,7 @@ services:
   #   command: foo::1000
 
   elk:
-    image: sebp/elk:es241_l240_k461
+    image: sebp/elk
     ports:
       - "5601:5601"
       - "9200:9200"
