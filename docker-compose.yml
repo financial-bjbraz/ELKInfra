@@ -40,7 +40,7 @@ services:
     environment:
         TERM: linux
     volumes:
-      - ./logstash.conf:/etc/logstash/conf.d/logstash.conf
+      - ./logstash.conf:/etc/logstash/conf.d/logstash2.conf
       - /tmp/gestaosva.log:/tmp/logs/application.log
 
 # volumes:
